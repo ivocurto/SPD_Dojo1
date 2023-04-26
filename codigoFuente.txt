@@ -1,1 +1,88 @@
-Chau
+/*
+Ivo Curto Eivers - 1B- Dojo A- Primer Nivel
+
+1- El semáforo tiene que tener 2 leds de cada color
+como mínimo, en caso de que uno se  rompa.
+
+2- Tiene que implementar los tiempos correctos como 
+se detallan a continuación. 
+
+3- El verde dura 5 segundos.
+
+4- El amarillo dura 3 segundos.
+
+5- Rojo dura 5 segundos.
+
+6- Tiene que tener señalización para personas no videntes
+como se detalla a  continuación. (Buzzer o piezo)
+
+7- Durante el rojo: Tiene que sonar 
+
+2 vez por segundo en un tono FUERTE. 
+
+*/ 
+
+#define LEDROJAUNO 13
+#define LEDROJADOS 12
+#define LEDAMARILLAUNO 11
+#define LEDAMARILLADOS 10
+#define LEDVERDEUNO 9
+#define LEDVERDEDOS 8
+#define PIEZO 1
+
+void encenderLed(int ledUno, int ledDos, int tiempoEncendido);
+void apagarLed(int ledUno, int ledDos);
+
+int duracionVerde = 5000;
+int duracionAmarilla = 3000;
+int duracionRoja = 5000;
+int tonoPiezo = 150;
+int duracionPiezo = 250;
+int tiempoEntrePitidos = 500;
+
+void setup()
+{
+  pinMode(PIEZO, OUTPUT);
+  pinMode(LEDROJAUNO, OUTPUT);
+  pinMode(LEDROJADOS, OUTPUT);
+  pinMode(LEDAMARILLAUNO, OUTPUT);
+  pinMode(LEDAMARILLADOS, OUTPUT);
+  pinMode(LEDVERDEUNO, OUTPUT);
+  pinMode(LEDVERDEDOS, OUTPUT);
+}
+
+void loop()
+{
+  encenderLed(LEDVERDEUNO,LEDVERDEDOS,duracionVerde);
+  apagarLed(LEDVERDEUNO,LEDVERDEDOS);
+  
+  encenderLed(LEDAMARILLAUNO,LEDAMARILLADOS,duracionAmarilla);
+  apagarLed(LEDAMARILLAUNO,LEDAMARILLADOS);
+  
+  digitalWrite(LEDROJAUNO, HIGH);
+  digitalWrite(LEDROJADOS, HIGH);
+  
+  for (int i = 0; i < 10; i++) { 
+    tone(PIEZO, tonoPiezo, duracionPiezo);
+    delay(duracionPiezo);
+    noTone(PIEZO);
+    delay(duracionPiezo);
+  }
+  
+  apagarLed(LEDROJAUNO,LEDROJADOS);
+  noTone(PIEZO);
+   
+}
+
+void encenderLed(int ledUno, int ledDos, int tiempoEncendido)
+{
+  digitalWrite(ledUno, HIGH);
+  digitalWrite(ledDos, HIGH);
+  delay(tiempoEncendido);
+}
+
+void apagarLed(int ledUno, int ledDos)
+{
+  digitalWrite(ledUno, LOW);
+  digitalWrite(ledDos, LOW);
+}

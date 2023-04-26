@@ -3,53 +3,55 @@
 
 
 ## Integrantes 
-- Esteban Marcelo Quiroz  
+- Nicolas Dekker
+- Ivo Curto
+- Tobias Esquivel
+- Jorge Cabezas
+- Silvina Gauto
+- Alvaro Braddy Calla Huangal
 
 
-## Proyecto: Contador binario.
-![Tinkercad](./img/ContadorBinario.png)
+## Proyecto: Dojo Uno Semaforo.
+![Tinkercad](./IMG/DojoUnoSemaforo.JPG)
 
 
 ## Descripción
-En este parrafo deberan describir que funcion cumple su proyecto. Que solucion esta ofreciendo.
+Este programa controla un semáforo con dos luces de cada color (rojo, amarillo y verde) y un sonido para personas no videntes mientras la luz roja está encendida. 
+
+Al principio se definen las constantes para los pines de los LEDs y el piezo. Tambien se establecen las variables para la duración de cada color del semáforo y para la frecuencia y duración del tono del piezo.
+
+En la función "setup" se configuran los pines como entradas o salidas. En la función "loop" se maneja el patrón del semáforo y del pitido para no videntes. Primero se encienden los LEDs verdes por 5 segundos, luego los amarillos por 3 segundos y al final los LEDs rojos por 5 segundos con el sonido del piezo emitiendo dos pitidos por segundo.
+
+Las funciones "encenderLed" y "apagarLed" sirven para encender y apagar los LEDs y son llamadas en la función "loop". La función "tone" sirve para generar un tono en el piezo y la función "noTone" para frenarlo.
 
 ## Función principal
-Esta funcion se encarga de encender y apagar los leds.
+Estas funciones son las que se encargan de encender y apagar los leds.
 
-B0, B1, B2, B3 son #define que utilizamos para agregar los leds, asociandolo a pines de la placa arduino.
+LEDROJAUNO , LEDROJADOS , LEDAMARILLAUNO , LEDAMARILLADOS , LEDVERDEUNO LEDVERDEDOS son #define que utilizamos para agregar los leds, asociandolo a pines de la placa arduino.
 
-(Breve explicación de la función)
-
-~~~ C (lenguaje en el que esta escrito)
-void EncenderBinario(int estado3, int estado2,int estado1,int estado0)
+~~~ C++ (lenguaje en el que esta escrito)
+void encenderLed(int ledUno, int ledDos, int tiempoEncendido)
 {
-  digitalWrite(B3,estado3);
-  digitalWrite(B2,estado2);
-  digitalWrite(B1,estado1);
-  digitalWrite(B0,estado0);
+  digitalWrite(ledUno, HIGH);
+  digitalWrite(ledDos, HIGH);
+  delay(tiempoEncendido);
+}
+
+void apagarLed(int ledUno, int ledDos)
+{
+  digitalWrite(ledUno, LOW);
+  digitalWrite(ledDos, LOW);
 }
 ~~~
 
 ## :robot: Link al proyecto
-- [proyecto](https://www.tinkercad.com/things/aOYiibnDjWu)
+- [proyecto](https://www.tinkercad.com/things/kzoojtExKJF-ivo-curto-eivers-1b-dojo-a-primer-nivel/editel?sharecode=blM_sfte4mjfYAFwQZhj_rx6VgSKrYop5ZFPB5AzXtE)
 ## :tv: Link al video del proceso
-- [video](https://www.youtube.com/watch?v=VyGjE8kx-O0)
+- [video](https://youtu.be/w5THHZ0qJrs)
 
 ---
 ### Fuentes
-- [Consejos para documentar](https://www.sohamkamani.com/how-to-write-good-documentation/#architecture-documentation).
 
-- [Lenguaje Markdown](https://markdown.es/sintaxis-markdown/#linkauto).
-
-- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
-
-- [Tutorial](https://www.youtube.com/watch?v=oxaH9CFpeEE).
-
-- [Emojis](https://gist.github.com/rxaviers/7360908).
+- [Tutorial](https://www.youtube.com/watch?v=ATlVH0Gdxtg).
 
 ---
-
-
-
-
-
